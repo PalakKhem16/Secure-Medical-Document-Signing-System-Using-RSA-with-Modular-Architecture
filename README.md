@@ -95,4 +95,23 @@ Hiding a secret authentication token inside a carrier image successfully protect
 ### Performance Overhead Comparison
 <img width="860" height="608" alt="image" src="https://github.com/user-attachments/assets/3316e564-b1a7-4036-b466-a40d84eb9ea9" />
 
+## Legal Compliance with IT ACT 2000
+
+<img width="861" height="463" alt="image" src="https://github.com/user-attachments/assets/d85712a1-1472-4b61-8793-3e57b08fbb2b" />
+ 
+The Digital Personal Data Protection Act, 2023 further supports the design of this system
+through principles such as lawful processing, consent-based handling, purpose limitation, and
+erasure of unnecessary data. In a medical document system, these ideas are important because
+records should be accessed only by authorized roles and used only for the intended healthcare
+purpose. The system therefore includes role-based access, logging, and secure deletion support.
+This approach is also conceptually aligned with international data protection practices such as
+the “right to ensure” (right to be forgotten) under the General Data Protection Regulation
+(GDPR). These principles collectively strengthen the system’s alignment with both national and
+internationally recognized data protection practices.
+The right to privacy under Article 21 provides an important constitutional context for this
+project, since medical documents contain highly sensitive personal information.
+Accordingly, the system is designed to support confidentiality, restricted access, and secure
+handling of records. This discussion is intended for academic understanding and should not be
+considered legal advice.
+
 
