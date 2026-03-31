@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediSign — Steganography</title>
+  <meta name="description" content="Hide and extract secret text in images using LSB steganography"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="page">
+
+  <nav class="navbar">
+    <span class="logo"> MediSign</span>
+    <div style="display:flex; gap:12px;">
+      <a href="dashboard.html" class="btn btn-ghost" style="padding:7px 16px; font-size:0.85rem;">← Dashboard</a>
+      <button class="btn btn-ghost" onclick="logout()" style="padding:7px 16px; font-size:0.85rem;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="section">
+    <div class="card glass">
+      <h1 class="heading" style="font-size:1.3rem; margin-bottom:4px;"> Steganography</h1>
+      <p class="sub" style="margin-bottom:24px;">Conceal secret text inside an image using LSB (Least Significant Bit) encoding.</p>
+
+      <div class="tabs">
+        <button class="tab-btn active" id="tabHide"    onclick="switchTab('hide')"> Hide Text</button>
+        <button class="tab-btn"        id="tabExtract" onclick="switchTab('extract')"> Extract Text</button>
+      </div>
+
+      <!-- HIDE TAB -->
+      <div class="tab-panel active" id="panelHide">
+        <form id="hideForm">
+          <div class="form-group">
+            <label>Carrier Image (PNG / BMP recommended)</label>
+            <div class="upload-zone" id="hideZone" onclick="document.getElementById('hideFile').click()">
+              <input type="file" id="hideFile" accept="image/*"/>
+              <div id="hideFileName"> Click to select an image</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="hideText">Secret Text</label>
+            <textarea id="hideText" class="input" placeholder="Enter the secret text to hide inside the image…" required></textarea>
+          </div>
+          <button id="hideBtn" class="btn btn-primary" type="submit">Hide Text in Image</button>
+        </form>
+        <div class="alert" id="hideAlert"></div>
+        <div id="hideResult" style="display:none; margin-top:18px;">
+          <p class="sub" style="margin-bottom:10px;"> Text hidden. Download your steg image:</p>
+          <a id="hideDownload" class="btn btn-ghost" href="#" download> Download Steg Image</a>
+        </div>
+      </div>
+
+      <!-- EXTRACT TAB -->
+      <div class="tab-panel" id="panelExtract">
+        <form id="extractForm">
+          <div class="form-group">
+            <label>Steg Image (the image containing hidden data)</label>
+            <div class="upload-zone" id="extractZone" onclick="document.getElementById('extractFile').click()">
+              <input type="file" id="extractFile" accept="image/*"/>
+              <div id="extractFileName"> Click to select the steg image</div>
+            </div>
+          </div>
+          <button id="extractBtn" class="btn btn-primary" type="submit">Extract Hidden Text</button>
+        </form>
+        <div class="alert" id="extractAlert"></div>
+        <div id="extractResult" style="display:none; margin-top:18px;">
+          <label style="font-size:0.85rem; color:var(--text-muted); margin-bottom:8px; display:block;">Hidden text found:</label>
+          <div id="extractOutput" class="mono"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/steg.js"></script>
+</body>
+</html>

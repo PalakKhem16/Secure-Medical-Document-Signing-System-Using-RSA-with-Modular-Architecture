@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediSign — Sign Document</title>
+  <meta name="description" content="Sign a medical document using your RSA private key"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="page">
+
+  <nav class="navbar">
+    <span class="logo"> MediSign</span>
+    <div style="display:flex; gap:12px;">
+      <a href="dashboard.html" class="btn btn-ghost" style="padding:7px 16px; font-size:0.85rem;">← Dashboard</a>
+      <button class="btn btn-ghost" onclick="logout()" style="padding:7px 16px; font-size:0.85rem;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="section">
+    <!-- Sign -->
+    <div class="card glass" style="margin-bottom:28px;">
+      <h1 class="heading" style="font-size:1.3rem; margin-bottom:4px;"> Sign Document</h1>
+      <p class="sub" style="margin-bottom:24px;">Your RSA private key will be used to generate a tamper-proof signature.</p>
+
+      <form id="signForm">
+        <div class="form-group">
+          <label for="signFile">Document File</label>
+          <input type="file" id="signFile" class="input" style="padding: 10px;" required />
+        </div>
+        <button id="signBtn" class="btn btn-primary" type="submit">Sign Document</button>
+      </form>
+
+      <div class="alert" id="signAlert"></div>
+
+      <!-- Result -->
+      <div id="signResult" style="display:none; margin-top:24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <label style="font-size:0.85rem; font-weight:500; color:var(--text-muted);">RSA Signature (copy this)</label>
+          <button class="btn btn-ghost" onclick="copySig()" style="padding:5px 14px; font-size:0.82rem;"> Copy</button>
+        </div>
+        <div id="signatureOutput" class="mono"></div>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:10px;">
+          Document ID: <span id="docIdOutput" style="color:var(--accent);"></span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Crypto-Shredding -->
+    <div class="card glass">
+      <h2 class="heading" style="font-size:1.3rem; margin-bottom:4px;"> Crypto-Shredding</h2>
+      <p class="sub" style="margin-bottom:24px;">
+        Destroy a document's encryption key. The record remains but the content becomes permanently unrecoverable.
+      </p>
+      <form id="shredForm">
+        <div class="form-group">
+          <label for="shredDocId">Document ID</label>
+          <input id="shredDocId" class="input" type="text" placeholder="Paste the document UUID here" required/>
+        </div>
+        <button id="shredBtn" class="btn btn-danger" type="submit"> Shred Document</button>
+      </form>
+      <div class="alert" id="shredAlert"></div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/sign.js"></script>
+</body>
+</html>

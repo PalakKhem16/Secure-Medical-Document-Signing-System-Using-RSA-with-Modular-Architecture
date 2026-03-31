@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediSign — Verify Document</title>
+  <meta name="description" content="Verify RSA document signature — VALID or TAMPERED"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="page">
+
+  <nav class="navbar">
+    <span class="logo"> MediSign</span>
+    <div style="display:flex; gap:12px;">
+      <a href="dashboard.html" class="btn btn-ghost" style="padding:7px 16px; font-size:0.85rem;">← Dashboard</a>
+      <button class="btn btn-ghost" onclick="logout()" style="padding:7px 16px; font-size:0.85rem;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="section">
+    <div class="card glass">
+      <h1 class="heading" style="font-size:1.3rem; margin-bottom:4px;"> Verify Document</h1>
+      <p class="sub" style="margin-bottom:24px;">Check if a document's RSA signature is authentic. Any content modification will show as TAMPERED.</p>
+
+      <form id="verifyForm">
+        <div class="form-group">
+          <label for="vDoctorId">Signing Doctor's ID (e.g. DOC-1234)</label>
+          <input type="text" id="vDoctorId" class="input" placeholder="Enter the ID of the doctor who signed..." required />
+        </div>
+        <div class="form-group">
+          <label for="vFile">Document File</label>
+          <input type="file" id="vFile" class="input" style="padding: 10px;" required />
+        </div>
+        <div class="form-group">
+          <label for="vSignature">RSA Signature (hex)</label>
+          <textarea id="vSignature" class="input" placeholder="Paste the hex signature…" style="min-height:80px;" required></textarea>
+        </div>
+        <button id="verifyBtn" class="btn btn-primary" type="submit">Verify Signature</button>
+      </form>
+
+      <div class="alert" id="verifyAlert"></div>
+
+      <!-- Result -->
+      <div id="verifyResult" style="display:none; margin-top:28px; text-align:center;">
+        <div id="verifyBadge" style="font-size:1.6rem; margin-bottom:10px;"></div>
+        <div id="verifyStatus" style="font-size:1.1rem; font-weight:600;"></div>
+        <p id="verifyDesc" class="sub" style="margin-top:8px;"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/verify.js"></script>
+</body>
+</html>

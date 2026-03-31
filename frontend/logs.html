@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediSign — My Documents &amp; Logs</title>
+  <meta name="description" content="View signed documents and personal activity log"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="page">
+
+  <nav class="navbar">
+    <span class="logo"> MediSign</span>
+    <div style="display:flex; gap:12px;">
+      <a href="dashboard.html" class="btn btn-ghost" style="padding:7px 16px; font-size:0.85rem;">← Dashboard</a>
+      <button class="btn btn-ghost" onclick="logout()" style="padding:7px 16px; font-size:0.85rem;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="section">
+
+    <!-- Signed Documents -->
+    <div class="card glass" style="margin-bottom:28px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h1 class="heading" style="font-size:1.3rem;"> My Signed Documents</h1>
+        <button class="btn btn-ghost" onclick="loadDocs()" style="padding:7px 16px; font-size:0.85rem;">↻ Refresh</button>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>Document ID</th><th>Created At</th><th>Action</th></tr>
+          </thead>
+          <tbody id="docsBody">
+            <tr><td colspan="3" style="color:var(--text-muted); text-align:center;"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Personal Audit Logs -->
+    <div class="card glass">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h2 class="heading" style="font-size:1.3rem;"> My Activity Log</h2>
+        <button class="btn btn-ghost" onclick="loadLogs()" style="padding:7px 16px; font-size:0.85rem;">↻ Refresh</button>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>Action</th><th>Document ID</th><th>Timestamp</th><th>IP</th></tr>
+          </thead>
+          <tbody id="logsBody">
+            <tr><td colspan="4" style="color:var(--text-muted); text-align:center;"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/logs.js"></script>
+</body>
+</html>

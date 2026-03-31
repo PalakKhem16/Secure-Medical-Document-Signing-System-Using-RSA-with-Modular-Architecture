@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediSign — Doctor Dashboard</title>
+  <meta name="description" content="Doctor dashboard for signing documents, verification, and more"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="page">
+
+  <nav class="navbar">
+    <span class="logo"> MediSign</span>
+    <div style="display:flex; gap:12px; align-items:center;">
+      <span class="nav-info" id="navName"></span>
+      <span class="nav-info" id="navId" style="font-family:monospace;"></span>
+      <button class="btn btn-ghost" onclick="logout()" style="padding:7px 16px; font-size:0.85rem;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="section" style="max-width:960px;">
+    <h1 class="heading" style="margin-bottom:8px;">Welcome back </h1>
+    <p class="sub" style="margin-bottom:36px;">What would you like to do today?</p>
+
+    <div class="dash-grid">
+      <a href="sign.html" class="dash-card glass">
+        <div class="icon"></div>
+        <div class="title">Sign Document</div>
+        <div class="desc">Create a new RSA-signed medical document</div>
+      </a>
+      <a href="verify.html" class="dash-card glass">
+        <div class="icon"></div>
+        <div class="title">Verify Document</div>
+        <div class="desc">Check if a document signature is VALID or TAMPERED</div>
+      </a>
+      <a href="steg.html" class="dash-card glass">
+        <div class="icon"></div>
+        <div class="title">Steganography</div>
+        <div class="desc">Hide or extract secret text in images</div>
+      </a>
+      <a href="logs.html" class="dash-card glass">
+        <div class="icon"></div>
+        <div class="title">My Documents</div>
+        <div class="desc">View your signed documents and activity log</div>
+      </a>
+      <a id="settingsCard" href="#" class="dash-card glass" onclick="toggleSettings(event)">
+        <div class="icon"></div>
+        <div class="title">Settings</div>
+        <div class="desc">View your keys and profile info</div>
+      </a>
+    </div>
+
+    <!-- Settings panel -->
+    <div id="settingsPanel" class="glass" style="display:none; margin-top:28px; padding:32px;">
+      <h2 class="heading" style="font-size:1.2rem; margin-bottom:20px;">Your Profile &amp; Keys</h2>
+      <div id="profileContent" style="color:var(--text-muted); text-align:center;"><span class="spinner"></span></div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

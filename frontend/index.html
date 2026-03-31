@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediSign — Secure Login</title>
+  <meta name="description" content="Secure Medical Document Signing System — Doctor & Admin Login"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="page">
+  <div class="center-wrap">
+    <div class="login-card glass">
+
+      <!-- Logo -->
+      <div style="text-align:center; margin-bottom:32px;">
+        <div style="font-size:2.4rem; margin-bottom:8px;"></div>
+        <h1 class="heading" style="font-size:1.6rem;">MediSign</h1>
+        <p class="sub">Secure Medical Document Signing System</p>
+      </div>
+
+      <!-- Login form -->
+      <form id="loginForm" autocomplete="off">
+        <div class="form-group">
+          <label for="doctorId">Doctor ID</label>
+          <input id="doctorId" class="input" type="text" placeholder="e.g. DOC-4821 or ADMIN" required/>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" class="input" type="password" placeholder="Enter your password" required/>
+        </div>
+
+        <button id="loginBtn" class="btn btn-primary" style="width:100%; margin-top:6px;" type="submit">
+          Sign In
+        </button>
+
+        <div class="alert" id="loginAlert"></div>
+      </form>
+
+      <p class="sub" style="text-align:center; margin-top:22px;">
+        Admin? Use Doctor ID: <strong style="color:var(--accent);">ADMIN</strong>
+      </p>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
