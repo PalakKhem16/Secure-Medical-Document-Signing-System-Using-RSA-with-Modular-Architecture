@@ -1,4 +1,4 @@
-# MediSign — Secure Medical Document Signing System
+# Secure Medical Document Signing System Using RSA with Modular Architecture
 
 ## 1. What is the Problem?
 Medical documents (such as prescriptions, test results, and patient histories) are highly sensitive and prone to forgery, tampering, and unauthorized access. Traditional paper-based or basic digital records lack robust cryptographic guarantees. 
